@@ -4,8 +4,10 @@ class Character {
   final int strength;
   final int magic;
   final int speed;
-  final double stars;
-  final int ratings;
+  int totalStars = 0;
+  int ratings = 0;
+
+  double get average => (ratings == 0) ? 0 : totalStars / ratings;
 
   Character({
     required this.urlImage,
@@ -13,8 +15,6 @@ class Character {
     required this.strength,
     required this.magic,
     required this.speed,
-    required this.stars,
-    required this.ratings,
   });
 }
 
@@ -26,8 +26,6 @@ List<Character> characters = [
     strength: 8,
     magic: 9,
     speed: 9,
-    stars: 3.9,
-    ratings: 89,
   ),
   Character(
     urlImage:
@@ -36,8 +34,6 @@ List<Character> characters = [
     strength: 7,
     magic: 10,
     speed: 9,
-    stars: 4.5,
-    ratings: 101,
   ),
   Character(
     urlImage:
@@ -46,7 +42,5 @@ List<Character> characters = [
     strength: 8,
     magic: 8,
     speed: 6,
-    stars: 2.7,
-    ratings: 50,
   ),
 ];
