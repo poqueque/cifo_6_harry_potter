@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:harry_potter/models/hogwarts_data.dart';
-import 'package:harry_potter/screens/character_list.dart';
+import 'package:harry_potter/screens/splash.dart';
+import 'package:harry_potter/services/hogwarts_data.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             centerTitle: true,
           ),
         ),
-        home: CharacterList(),
+        home: Splash(),
       ),
     );
   }

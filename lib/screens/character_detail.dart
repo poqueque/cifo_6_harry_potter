@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:harry_potter/models/character.dart';
-import 'package:harry_potter/models/hogwarts_data.dart';
+import 'package:harry_potter/services/hogwarts_data.dart';
 import 'package:harry_potter/styles/app_styles.dart';
 import 'package:harry_potter/widgets/rating.dart';
+import 'package:isar_community/isar.dart';
 import 'package:provider/provider.dart';
 
 class CharacterDetail extends StatelessWidget {
   const CharacterDetail({super.key, required this.characterId});
-  final int characterId;
+  final Id characterId;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +18,7 @@ class CharacterDetail extends StatelessWidget {
       ),
       body: Consumer<HogwartsData>(
         builder: (context, hogwartsData, child) {
-          Character character =
-              hogwartsData.characters[characterId] ??
-              hogwartsData.characters[1]!;
+          Character character = hogwartsData.getCharacterById(characterId);
 
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,6 +94,7 @@ class CharacterDetail extends StatelessWidget {
 
   void updateData(BuildContext context, int value) {
     HogwartsData hogwartsData = context.read<HogwartsData>();
-    hogwartsData.addRating(characterId, value);
+    Character character = hogwartsData.getCharacterById(characterId);
+    hogwartsData.addRating(character, value);
   }
 }
